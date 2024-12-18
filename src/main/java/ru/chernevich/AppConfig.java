@@ -5,12 +5,17 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan("ru.chernevich")
 public class AppConfig{
-    @Bean
-    public LogicClass simpleLogicClass() {
-        return new LogicClass();
+
+    @Bean(initMethod = "afterInit", destroyMethod = "beforeDestroy")
+    public SimpleBean simpleBean(){
+        return new SimpleBean();
     }
-    @Bean
-    public LogicClass logicClassData() {
-        return new LogicClass("Logic class", 42);
-    }
+//    @Bean
+//    public LogicClass simpleLogicClass() {
+//        return new LogicClass();
+//    }
+//    @Bean
+//    public LogicClass logicClassData() {
+//        return new LogicClass("Logic class", 42);
+//    }
 }
